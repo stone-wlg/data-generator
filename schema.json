@@ -1,14 +1,7 @@
-{
-       "ts"    : { "type": "timestamp", "method": "series", "start": "2018-01-01"},
-       "f01"   : ["float", "random", 0, 10, 2],
-       "f02"   : ["float", "random", 0, 10, 2],
-       "f03"   : ["float", "random", 0, 10, 2],
-       "f04"   : ["float", "random", 0, 10, 2],
-       "f05"   : ["float", "random", 0, 10, 2],
-       "f06"   : ["float", "random", 0, 10, 2],
-       "f07"   : ["float", "random", 0, 10, 2],
-       "f08"   : ["float", "random", 0, 10, 2],
-       "f09"   : ["float", "random", 0, 10, 2],
-       "f10"   : ["float", "random", 0, 10, 2],
-       "f11"   : ["float", "random", 0, 10, 2]
-}
+[
+       { "name": "ts", "type": "timestamp", "method": "series", "start": "2018-01-01" },
+       { "name": "f1", "type": "float", "method": "random", "min": 0, "max": 10, "precision": 2 },
+       { "name": "f2", "type": "float", "method": "random", "min": 0, "max": 10, "precision": 2 },
+       { "name": "f3", "type": "float", "method": "random", "min": 0, "max": 10, "precision": 2 },
+       { "name": "f4", "type": "float", "method": "random", "min": 0, "max": 10, "precision": 2 }
+]
