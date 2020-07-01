@@ -1,5 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+import argparse
 import datetime 
 import json
 from random import *
@@ -91,19 +93,22 @@ class DataGenerator(object):
             theVal=int(theVal*(10**gPrecision))/(10**gPrecision)
         return theVal
 
+def parse_args():
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--num-of-files', dest='num_of_files', default=100, help='num of files')
+    parser.add_argument('--num-of-records', dest='num_of_records', default=10000, help='num of records')
+    parser.add_argument('--schema-file', dest='schema_file', default='./schema.json', help='schema file')
+    parser.add_argument('--output-dir', dest='output_dir', default='./output', help='output dir')
+    return parser.parse_args()
+
+def open_schema(schema_file):
+    schema = open(schema_file).read()
+    return json.loads(schema)
+
 if __name__ == '__main__':
-    salen=len(sys.argv)
-    if salen==1:
-        rowFormantFilePath="./rowFormat.json"
-        rowCnt=10
-    elif salen==2:
-        rowFormantFilePath="./rowFormat.json"
-        rowCnt=int(sys.argv[1])
-    elif salen>2:
-        rowFormantFilePath=sys.argv[1]
-        rowCnt=int(sys.argv[1])
-    json_data=open(rowFormantFilePath).read()
-    rowFormat=json.loads(json_data)
-    
-    g=DataGenerator(rowFormat,rowCnt)
-    g.generate()
+    args = parse_args()
+    schema = open_schema(args.schema_file)
+    print(schema)
+
+    # g=DataGenerator(rowFormat,rowCnt)
+    # g.generate()
